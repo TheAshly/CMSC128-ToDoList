@@ -29,6 +29,28 @@ def db_add_task (name, priority, date_due, time_due, date_now, time_now):
     conn.commit()
     print(f"Task {name} has been added!")
 
+
+def db_edit_task (id, name, priority, date_due, time_due):
+    cursor.execute("""
+    UPDATE tasks
+    SET name = ?,
+        priority = ?,
+        date_due = ?,
+        time_due = ?
+    WHERE id = ? 
+    """, (name, priority, date_due, time_due, id))  
+    conn.commit()
+    print(f"Task {name} has been edited!")
+
+def db_del_task (id, name):
+    cursor.execute("""
+    DELETE FROM tasks
+    WHERE id = ? """, (id,))  
+
+    conn.commit()
+    print(f"Task {name} has been edited!")
+    return id
+
 def db_clear_rows(): 
     cursor.execute("""DELETE from tasks""")
     conn.commit()
@@ -46,7 +68,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html", tasks=db_get_rows())
 
-
 @app.route('/add-task', methods=['post'])
 def add_task():
     name = request.form.get("name")
@@ -60,6 +81,28 @@ def add_task():
 
     db_add_task(name, priority, date_due, time_due, date_now, time_now)
     return redirect("/")
+
+
+@app.route('/edit-task', methods=['post'])
+def edit_task():
+    id = request.form.get("id")
+    name = request.form.get("name")
+    priority = request.form.get("priority")
+    date_due = request.form.get("date-due")
+    time_due = request.form.get("time-due")
+
+    db_edit_task(id, name, priority, date_due, time_due)
+    return redirect("/")
+
+
+@app.route('/delete-task', methods=['post'])
+def delete_task():
+    id = request.form.get("id")
+    name = request.form.get("name")
+    
+    db_del_task(id, name)
+    return redirect("/")
+
 
 
 if __name__ == "__main__":

@@ -56,10 +56,18 @@
             <tbody>
                 {% for task in tasks %}                    
                     <tr class="task-row">
+                        <td class="id" style="display: none;">{{task['id']}}</td>
                         <td class="name">{{task['name']}}</td>
                         <td class="priority">{{task['priority']}}</td>
-                        <td class="datetime-due">{{task['date_due']}} {{task['time_due']}}</td>
-                        <td class="datetime-added">{{task['date_added']}} {{task['time_added']}}</td>
+                        <td class="datetime-due">
+                            <span class="date-due">{{task['date_due']}}</span> 
+                            <span class="time-due">{{task['time_due']}}</span>
+                        </td>
+                        <td class="datetime-added">
+                            <span class="date-added">{{task['date_added']}}</span> 
+                            <span class="time-added">{{task['time_added']}}</span>
+                        </td>
+                        </td>
                         <td class="utils">
                             <span class="fa-solid fa-pen-to-square edit-btn"></span>    
                             <span class="fa-solid fa-trash delete-btn"></span>
@@ -106,14 +114,14 @@
 
 
     <section class="edit-task-modal-container">
-        <form class="edit-modal">
+        <form class="edit-modal" action="/edit-task" method="post">
             <div class="modal-header">
                 <h3>Edit Task</h3>
                 <div class="close-btn">&times;</div>
             </div>
             <div class="form-element">
                 <label>TASK NAME</label>
-                <input type="text" name="name" class="name-field" placeholder="Enter Name"/>
+                <input type="text" name="name" class="name-field" placeholder="Enter Name" required/>
             </div>
             <div class="form-element">
                 <label>PRIORITY</label>
@@ -125,12 +133,15 @@
             </div>
             <div class="form-element">
                 <label>DUE DATE</label>
-                <input type="date" name="date-due" class="date-field" placeholder="Select Date"/>
+                <input type="date" name="date-due" class="date-field" placeholder="Select Date" required/>
             </div>
             
             <div class="form-element">
                 <label>DUE TIME</label>
-                <input type="time" name="time-due" class="time-field" placeholder="Select Time"/>
+                <input type="time" name="time-due" class="time-field" placeholder="Select Time" required/>
+            </div>
+            <div class="hidden-element" style="display: none;">
+                <input type="text" name="id" class="id-field"/>
             </div>
             <div class="form-elememt">
                 <button class="edit-task-btn" type="submit">Edit Task</button>
@@ -141,14 +152,18 @@
 
     <section class="delete-task-modal-container">
         <div class="delete-modal">
-           <div class="modal-header">
+           <div class="modal-header">   
                 <h3>Confirm Delete</h3>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete the task ["Keith do squats"]?
+                Are you sure you want to delete the task <span class="task-name"></span>?
             </div>
             <div class="modal-buttons">
-                <form class="delete-task-btn-container">
+                <form class="delete-task-btn-container" action="/delete-task" method="post">
+                    <div class="hidden-element" style="display: none;">
+                        <input type="text" name="id" class="id-field"/>
+                        <input type="text" name="name" class="name-field"/>
+                    </div>
                     <button class="delete-task-btn-container" type="submit">Delete</button>
                 </form>
                 <div class="cancel-btn-container">              
