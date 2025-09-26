@@ -31,16 +31,18 @@
 
     <main class="todo-container">
         <section class="todo-header">
-            <select class="sort-dropdown">                              
+            <select class="sort-dropdown">                                  <!-- Must change tasks in class="task-list" when there is a change in the option in this dropdown -->                      
                 <option>Date Added</option>                 
                 <option>Date Due</option>
                 <option>Priority</option>
             </select>
             <div class="new-task-btn-container">
-                <button class="new-task-btn">New Task +</button>
+                <button class="new-task-btn">New Task +</button>           <!-- Opens Add Modal -->
             </div> 
         </section>  
 
+
+        <!-- Pressing the edit and delete icons must open their respective modal :> with its row info/name :> -->
         <table class="task-list">
             <thead>
                 <tr>
@@ -66,7 +68,8 @@
         </table>
     </main>
 
-    <section class="add-task-modal-container">
+    <!-- All modals should be display:none at default -->
+    <section class="add-task-modal-container">                      
         <form class="add-modal" action="/add-task" method="POST">
             <div class="modal-header">
                 <h3>Add Task</h3>
@@ -161,5 +164,7 @@
         </div>
         <div class="close-btn">&times;</div>
     </section>
+    
+    <script src="/static/scripts.js"></script>
 </body>
 </html>
