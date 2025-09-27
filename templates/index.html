@@ -15,6 +15,12 @@
 
         Below are key sections that you will need to style: header, todo-list (main),  
         modals, and toasts.
+
+        Tasks: 
+            - Sorting of the tasks 
+            - Displaying and hiding the add, edit, and delete modals by button presses.
+            - Displaying and hiding the toast after a certain amount of time
+            - Styling of the document
     -->
 
     <!-- Make this image into a bg image -->
@@ -43,9 +49,10 @@
 
 
         <!-- Pressing the edit and delete icons must open their respective modal :> with its row info/name :> -->
-        <table class="task-list">
+        <table class="tasks">
             <thead>
                 <tr>
+                    <th></th>
                     <th>TASKS</th>
                     <th>PRIORITY</th>
                     <th>DUE ON</th>
@@ -53,27 +60,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                {% for task in tasks %}                    
-                    <tr class="task-row">
-                        <td class="id" style="display: none;">{{task['id']}}</td>
-                        <td class="name">{{task['name']}}</td>
-                        <td class="priority">{{task['priority']}}</td>
-                        <td class="datetime-due">
-                            <span class="date-due">{{task['date_due']}}</span> 
-                            <span class="time-due">{{task['time_due']}}</span>
-                        </td>
-                        <td class="datetime-added">
-                            <span class="date-added">{{task['date_added']}}</span> 
-                            <span class="time-added">{{task['time_added']}}</span>
-                        </td>
-                        </td>
-                        <td class="utils">
-                            <span class="fa-solid fa-pen-to-square edit-btn"></span>    
-                            <span class="fa-solid fa-trash delete-btn"></span>
-                        </td>
-                    </tr>
-                {% endfor %}
+            <tbody class="task-list">
             </tbody>
         </table>
     </main>
@@ -164,7 +151,7 @@
                         <input type="text" name="id" class="id-field"/>
                         <input type="text" name="name" class="name-field"/>
                     </div>
-                    <button class="delete-task-btn-container" type="submit">Delete</button>
+                    <button class="delete-task-btn" type="submit">Delete</button>
                 </form>
                 <div class="cancel-btn-container">              
                     <button class="cancel-btn">Cancel</button>
@@ -173,15 +160,16 @@
         </div>
     </section>
 
-
     <section class="toast-container">
         <div class="toast-body">
             <h3>Task Deleted Successfully</h3>
-            <p>Task Jebs has been deleted. If you want to undo this action, <a href="#">click here!</a></p>
+            <p>Task <span class="task-name"></span> has been deleted.</p> 
+            <form action="/restore-task", method="post">
+                <button type="submit" class="restore-task">Undo Delete</button>
+            </form>
         </div>
         <div class="close-btn">&times;</div>
     </section>
-    
-    <script src="/static/scripts.js"></script>
 </body>
+<script src="/static/scripts.js"></script>
 </html>
