@@ -125,6 +125,27 @@ img[src="/static/images/sumeru.jpg"] {
   width: 500px;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+td {
+    position: relative;
+    padding: 5px 10px;
+}
+
+tr.completed {
+  color: gray;
+}
+tr.completed td:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 1px solid gray;
+    width: 100%;
+}
+
 
 /* Example styles (uncomment or remove if you want) */
 /* header {
