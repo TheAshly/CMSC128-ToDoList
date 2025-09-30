@@ -169,4 +169,62 @@ fetch('/show-toast', {
     } 
 })
 
+const editBtn = document.getElementsByClassName("fa-solid fa-pen-to-square edit-btn");
+const deleteBtn = document.getElementsByClassName('fa-solid fa-trash delete-btn');
+const addBtn = document.getElementById('new-task-btn');
+const undoBtn = document.getElementById('delete-task');
 
+const closeEdit = document.getElementById('edit-close-btn');
+const cancelDelete = document.getElementById('cancel-btn');
+const closeAdd = document.getElementById('add-close-btn');
+const closeUndo = document.getElementById('undo-close-btn');
+
+const editTask = document.getElementById('edit-container');
+const deleteTask = document.getElementById('delete-container');
+const addTask = document.getElementById('add-container');
+const undoDel = document.getElementById('undo-container');
+
+const overlay = document.getElementById('dark-overlay');
+
+Array.from(editBtn).forEach(button => {
+    button.addEventListener("click", function() {
+        editTask.style.display = "block";
+        overlay.style.display = "block";
+
+    });
+});
+
+Array.from(deleteBtn).forEach(button => {
+    button.addEventListener("click", function() {
+        deleteTask.style.display = "block";
+        overlay.style.display = "block";
+    });
+});
+
+addBtn.addEventListener("click", function() {
+    addTask.style.display = "block";
+    overlay.style.display = "block";
+});
+
+closeEdit.addEventListener("click", function() {
+    editTask.style.display = "none";
+    overlay.style.display = "none";
+});
+
+cancelDelete.addEventListener("click", function() {
+    deleteTask.style.display = "none";
+    overlay.style.display = "none";
+});
+
+closeAdd.addEventListener("click", function() {
+    addTask.style.display = "none";
+    overlay.style.display = "none";
+});
+
+undoBtn.addEventListener("click", function() {
+    undoDel.style.display = "block";
+});
+
+closeUndo.addEventListener("click", function() {
+    undoDel.style.display = "block";
+});
