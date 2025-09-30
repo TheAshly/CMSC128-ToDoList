@@ -8,6 +8,7 @@
     <title>To-do List</title>
 </head>
 <body>
+    <div id="dark-overlay"></div>
     <!---
         Hello Keith, this will be the document you refer to when styling or making scripts. 
         Refer to static folder for images, stylesheets, and scripts. Make sure to put all 
@@ -41,7 +42,7 @@
                 <option>Sort by Date Due</option>
                 <option>Sort by Priority</option>
             </select>
-            <div class="new-task-btn-container">
+            <div id='new-task-btn' class="new-task-btn-container">
                 <button class="new-task-btn">New Task +</button>           <!-- Opens Add Modal -->
             </div> 
         </section>  
@@ -51,25 +52,49 @@
         <table class="tasks">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>TASKS</th>
-                    <th>PRIORITY</th>
-                    <th>DUE ON</th>
-                    <th>ADDED AT</th>
-                    <th></th>
+                    <td></td>
+                    <td>TASKS</td>
+                    <td>PRIORITY</td>
+                    <td>DUE ON</td>
+                    <td>ADDED AT</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody class="task-list">
+                            <tr class="task-row ${(task['completed']) ? 'completed': '' } ">
+                <td class="checkbox-container">
+                    <i></i>
+                </td>
+                <td class="id" style="display: none;">1</td>
+                <td><span class="name">sir rene</span></td>
+                <td><span class="priority">medium</span></td>
+                <td class="datetime-due">
+                    <span class="date-due">2025-09-15</span> 
+                    <span class="time-due">10:41</span>
+                </td>
+                <td class="datetime-added">
+                    <span class="date-added">2025-09-15</span> 
+                    <span class="time-added">10:41 </span>
+                </td>
+                </td>
+                <td class="utils-edit">
+                    <span class="fa-solid fa-pen-to-square edit-btn"></span>    
+                </td>
+                <td class="utils-delete">
+                    <span class="fa-solid fa-trash delete-btn"></span>   
+                </td>                 
+            </tr>
             </tbody>
         </table>
     </main>
 
     <!-- All modals should be display:none at default -->
-    <section class="add-task-modal-container">                      
+    <section id='add-container' class="add-task-modal-container">                      
         <form class="add-modal" action="/add-task" method="POST">
             <div class="modal-header">
                 <h3>Add Task</h3>
-                <div class="close-btn">&times;</div>
+                <div id='add-close-btn' class="close-btn">&times;</div>
             </div>
             <div class="input-fields">
                 <div class="form-element">
@@ -103,11 +128,11 @@
     </section>
 
 
-    <section class="edit-task-modal-container">
+    <section id="edit-container" class="edit-task-modal-container">
         <form class="edit-modal" action="/edit-task" method="post">
             <div class="modal-header">
                 <h3>Edit Task</h3>
-                <div class="close-btn">&times;</div>
+                <div id ="edit-close-btn" class="close-btn">&times;</div>
             </div>
             <div class="input-fields">
                 <div class="form-element">
@@ -144,7 +169,7 @@
     </section>
 
 
-    <section class="delete-task-modal-container">
+    <section id="delete-container" class="delete-task-modal-container">
         <div class="delete-modal">
            <div class="modal-header">   
                 <h3>Confirm Delete</h3>
@@ -160,7 +185,7 @@
                     </div>
                     <button class="delete-task-btn" type="submit">Delete</button>
                 </form>
-                <div class="cancel-btn-container">              
+                <div id ="cancel-btn" class="cancel-btn-container">              
                     <button class="cancel-btn">Cancel</button>
                 </div>
             </div>
