@@ -115,11 +115,18 @@
 /*  PAGE STYLES  */
 body {
    background-color: var(--bg-color); 
+   background-image: url("/static/images/sumeru.jpg");
+   background-attachment: fixed;
+   background-size: cover;
+   color: white;
+   z-index: 0;
+   position: relative;
+
 }
 
-body > * {
+/* body > * {
   margin: 50px;
-}
+} */
 
 img[src="/static/images/sumeru.jpg"] {
   width: 500px;
@@ -148,15 +155,16 @@ tr.completed td:before {
 
 
 /* Example styles (uncomment or remove if you want) */
-/* header {
+header {
   width: 100%;
   height: 35vh;
   display: flex;
-  justify-content: center;
   background-color: var(--color-header);
+  position: absolute;
 }
 header hgroup {
   width: 600px;
+  margin-left: 25%;
 }
 header h1 {
   margin-top: var(--mar-xxlarge);
@@ -171,6 +179,168 @@ header h2 {
   font-weight: var(--fw-regular);
   letter-spacing: 0.5px;
   color: #ABABAB;
-} */
+}
 
 
+.todo-container {
+
+  padding: var(--pad-x-xlarge) ;
+  background-color: white;
+  color: #2e3f2c;
+  width: 50%;
+  box-shadow: 0 0 5px 0 white; 
+  height: 600px;
+  position: absolute;
+  left: 25%;
+  top: 20%;
+  .todo-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--fs-20);
+    margin-bottom: var(--mar-xlarge);
+    select {
+      padding-left: 0.2em;
+      font-size: var(--fs-18);
+      color: #2e3f2c;
+      font-family: var(--ff-body);
+      height: 2em;
+      width: 40%;
+    }
+    button {
+      padding: 0.5em;
+      width: 100%;
+      background-color: #2e3f2c;
+      color: white;
+      font-size: var(--fs-16);
+      font-family: var(--ff-body);
+      width: 10em;
+    }
+  }
+  table {
+    border: pink 1px solid;
+    width: 100%;
+    th{
+      border: purple 1px solid;
+      color: #676b75 ;
+      width: 10em;
+    }
+  }
+
+}
+
+.edit-task-modal-container, .add-task-modal-container {
+  padding: var(--pad-x-large) ;
+  background-color: white;
+  color: #2e3f2c;
+  width: 30%;
+  box-shadow: 0 0 5px 0 white; 
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--fs-20);
+  }
+  .input-fields{
+    padding: var(--pad-x-default) ;
+    label {
+      font-size: var(--fs-14);
+      color: #676b75 ;
+      font-family: var(--ff-body);
+    }
+    select, input {
+      padding-left: 0.2em;
+      font-size: var(--fs-18);
+      color: #2e3f2c;
+      font-family: var(--ff-body);
+      height: 1.5em;
+    }
+    .form-element {
+      display: flex;
+      flex-direction: column;
+      vertical-align: auto;
+    }
+    .lower-input-fields {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--mar-small);
+
+    }
+    .edit-task-btn, .add-task-btn {
+      margin-top: var(--mar-large);
+      padding: 0.5em;
+      width: 100%;
+      background-color: #2e3f2c;
+      color: white;
+      font-size: var(--fs-16);
+      font-family: var(--ff-body);
+    }
+  }
+  .priority-field {
+    width: 11em;
+  }
+}
+
+.delete-task-modal-container {
+  padding: var(--pad-x-large) ;
+  background-color: white;
+  color: #2e3f2c;
+  width: 20%;
+  box-shadow: 0 0 5px 0 white; 
+  .modal-header {
+    font-size: var(--fs-20);
+    margin-bottom: var(--mar-small);
+  }
+  .modal-body {
+    font-size: var(--fs-16);
+  }
+  .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: var(--mar-small);
+  }
+  button {
+    padding: 0.5em;
+    width: 100%;
+    font-size: var(--fs-16);
+    font-family: var(--ff-body);
+  }
+  .delete-task-btn{
+    background-color: #2e3f2c;
+    color: white;
+  }
+  .cancel-btn-container{
+    margin-left: var(--mar-small);
+  }
+  .cancel-button{
+    color: 2e3f2c;
+    
+  }
+}
+.toast-container {
+  padding: var(--pad-x-large) ;
+  background-color: white;
+  color: #2e3f2c;
+  width: 30%;
+  box-shadow: 0 0 5px 0 white; 
+  font-size: var(--fs-16);
+  .toast-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--fs-20);
+    margin-bottom: var(--mar-small);
+  }
+  .toast-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: var(--mar-small);
+
+      button{
+        padding: 0.5em;
+        width: 100%;
+        font-size: var(--fs-16);
+        font-family: var(--ff-body);
+        background-color: #2e3f2c;
+        color: white;
+      }
+  }
+}
