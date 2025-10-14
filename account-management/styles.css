@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=League+Spartan:wght@100..900&display=swap');
+
+:root {
+  /* colors */
+  --color-header: rgb(23, 23, 23);
+  --color-body: rgb(255, 255, 255);
+  --color-primary: rgb(46, 64, 44);
+  --color-secondary: rgb(73, 76, 107); 
+  --border-color-1: rgb(227, 228, 241);
+
+  /* font-size */
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-30: 30px;
+  --fs-36: 36px;
+  --fs-48: 48px;
+  --fs-60: 60px;
+  --fs-72: 72px;
+
+  /* font-weight */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
+
+  /* font-family */
+  --ff-heading:  'Albert Sans', Helvetica, sans-serif;
+  --ff-body:    'League Spartan', Arial, sans-serif;
+
+  /* horizontal padding */
+  --pad-x-xsmall: 8px;
+  --pad-x-small: 12px;
+  --pad-x-default: 16px;
+  --pad-x-large: 25px;
+  --pad-x-xlarge: 40px;
+  --pad-x-xxlarge: 64px;
+  
+  /* vertcal padding */
+  --pad-y-xsmall: 4px;
+  --pad-y-small: 6px;
+  --pad-y-default: 8px;  
+  --pad-y-large: 13px;
+  --pad-y-xlarge: 20px;
+  --pad-y-xxlarge: 32px;
+
+  /* margin */
+  --mar-xsmall: 7px;
+  --mar-small: 10px;
+  --mar-default: 16px;  
+  --mar-large: 25px;
+  --mar-xlarge: 40px;
+  --mar-xxlarge: 60px;
+  --mar-section-separation-default: 100px;
+  --mar-section-separation-large: 150px;
+
+  /* default html styles*/
+  font-size: var(--fs-14);
+  font-family: var(--ff-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes up-and-down {
+    0% {
+    transform: translateY(0); 
+  } 50% {
+    transform: translateY(-1em); 
+  } 100% {
+    transform: translateY(0); 
+  }
+}
+
+/*  PAGE STYLES  */
+body {
+   background-color: var(--bg-color); 
+   background-image: url("images/sumeru.jpg");
+   background-attachment: fixed;
+   background-size: cover;
+   color: white;
+   z-index: 0;
+   position: relative;
+
+}
+
+img[src="/static/images/sumeru.jpg"] {
+  width: 500px;
+}
+
+
+header {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  background-color: var(--color-header);
+  z-index: -1;
+  position: absolute;
+}
+header hgroup {
+  width: 100vh;
+  margin-left: 18%;
+}
+header h1 {
+  margin-top: var(--mar-section-separation-default);
+  font-size: var(--fs-36);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+  color: white;
+}
+header h2 {
+  font-size: var(--fs-18);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.5px;
+  color: #ABABAB;
+}
+
+.model-image {
+  position: fixed;
+  width: 50%;
+  margin-left: 4%;
+  margin-top: 16vh;
+  animation: up-and-down 2s ease-in-out infinite;
+  img{
+    width: 100%;
+  }
+}
+
+.login-container, .register-container, .account-container{
+  margin-top: 20vh;
+  padding: var(--pad-x-large) ;
+  background-color: white;
+  color: #2e3f2c;
+  width: 28%;
+  margin-right: 18%;
+  float: right;
+  box-shadow: 0 0 5px 0 white; 
+  position: relative;
+}
+
+#dark-overlay{
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: black;
+  opacity: 50%;
+  
+}
+
+.created-container {
+  display: none;
+  padding: var(--pad-x-default) ;
+  background-color: white;
+  color: #2e3f2c;
+  width: 24%;
+  margin-left: 38%;
+  margin-top: 19%;
+  box-shadow: 0 0 5px 0 white; 
+  text-align: center;
+  z-index: 2;
+  position: fixed;
+}
+
+.login-bottom-container{
+  margin-top: var(--pad-x-default);
+  button {
+    margin-top: var(--pad-x-large);
+  }
+}
+.hidden{
+  display: none;
+}
+
+.login-pass-field, .reg-pass-field, .reg-repass-field, .edit-pass-field{
+  display: flex;
+}
+
+.show-btn{
+  font-size: var(--fs-36);
+  position: absolute;
+  right: 0;
+  margin-right: var(--pad-x-large);
+  padding-right: var(--pad-x-xsmall);
+  padding-left: var(--pad-x-xsmall);
+  color: #8f8f8f;
+  background-color: white;
+  border: 1px solid #757575;
+  
+}
+.register-container{
+  display: none;
+  label:nth-child(n+2){
+    margin-top: var(--pad-x-default);
+  }
+}
+
+
+label {
+  font-family: var(--ff-body);
+  font-size: var(--fs-24);
+  color: #6d6d6d;
+}
+
+input {
+  padding: var(--pad-x-small);
+  height: 50px;
+  font-family: var(--ff-body);
+  font-size: var(--fs-20);
+  color: #2e3f2c;
+  width: 100%;
+}
+
+error {
+  color: red;
+  margin-top: var(--mar-xsmall);
+  margin-bottom: var(--mar-default);
+}
+.login-input-field, .register-input-field, .edit-input-field, .account-data-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-header {
+  padding: var(--pad-x-small);
+  margin-bottom: var(--mar-large);
+  font-size: var(--fs-30);
+  font-weight: var(--fw-semi-bold);
+  border-bottom: #a8a8a8 2px solid;
+  text-align: center;
+
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: var(--pad-x-default);
+  margin-top: var(--mar-default);
+  margin-bottom: var(--mar-default);
+  background-color: #2e3f2c;
+  font-family: var(--ff-body);
+  font-size: var(--fs-30);
+  color: white;
+}
+
+.new-acc{
+  text-align: center;
+  .btn {
+    width: 80%;
+    padding: var(--pad-x-default);
+    margin: var(--mar-large);
+    background-color: #4a7446;
+    font-family: var(--ff-body);
+    font-size: var(--fs-30);
+    color: white;
+  }
+}
+
+
+.forgot-password {
+  padding: var(--pad-x-default);
+  font-size: var(--fs-24);
+  text-align: center;
+  border-bottom: #a8a8a8 2px solid;
+}
+
+.close-btn {
+  font-size: var(--fs-24);
+  text-align: end;
+}
+
+.show-btn:hover, .close-btn:hover, .confirm-btn:hover, .forgot-password:hover, .btn:hover, #dark-overlay:hover, .created-container:hover {
+  cursor: pointer;
+}
+
+.edit-input-field, .account-data-field{ 
+  label:nth-child(n+2){
+    margin-top: var(--pad-x-default);
+  }
+  .btn {
+    width: 100%;
+    padding: var(--pad-x-default);
+    margin-top: var(--mar-default);
+    margin-bottom: var(--mar-default);
+    background-color: #4a7446;
+    font-family: var(--ff-body);
+    font-size: var(--fs-30);
+    color: white;
+  }
+}
+.edit-btn-field, .acc-btn-field{
+  display: flex;
+  border-bottom: #a8a8a8 2px solid;
+}
+
+info{
+  font-family: var(--ff-body);
+  font-size: var(--fs-36);
+}
+
+#acc-pass-btn{
+  font-size: var(--fs-24);
+}
+
+.edit-input-field, .account-container {
+  display: none;
+}

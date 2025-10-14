@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://kit.fontawesome.com/4ab18c6505.js" crossorigin="anonymous"></script>
+    <title>Account Management</title>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>SUMERU AKADEMIYA</h1>
+            <h2>An app to support you in your day to day in the Akademiya</h2>
+        </hgroup>
+    </header>
+    <div class="model-image">
+        <img src="images/nahida.png" alt="Italian Trulli">
+    </div>
+    <section id="login-field" class="login-container">                      
+        <div class="container-header">    
+            <div>Log into the Akademiya</div>
+        </div>
+        <div>
+            <form id="login-inputs" class="login-input-field">    
+                <label>Email</label>
+                <input id="login-email" type="text" placeholder="google@gmail.com" required/>
+                <error id="login-mail-error" class="hidden"></error>
+                <div class="login-bottom-container">
+                    <label>Password</label>
+                    <div class="login-pass-field">
+                        <input id="log-view-password" type="text" placeholder="********" required/>
+                        <div id='log-pass-btn' class="show-btn">&#128065;</div>  
+                    </div>
+                    <error id="login-pass-error" class="hidden"></error>
+                    <button type="submit" id="retrieve-account" class="confirm-btn">Log in</button>
+                </div>
+            </form>
+            <div class="login-lower-field">
+                <div class="forgot-password">Forgotten Password?</div>
+            </div>  
+            <div class="new-acc">
+                <button id="sign-up" class="btn">Create new account</button>
+            </div>  
+        </div>
+    </section>
+    <section id="register-field" class="register-container">       
+        <div id='register-close-btn' class="close-btn">&times;</div>   
+        <div class="container-header">      
+            <div>Register into the Akademiya</div>
+        </div>
+        <div>
+            <form id="register-inputs" class="register-input-field"> 
+                <label>Full Name</label>
+                <input type="text" id="register-user-name" placeholder="FirstName LastName" required/>
+                <error id="reg-name-error" class="hidden"></error>
+                <label>Email</label>
+                <input type="text" id="register-email"  placeholder="google@gmail.com" required/>
+                <error id="reg-mail-error" class="hidden"></error>
+                <label>Password</label>
+                <div class="reg-pass-field">
+                    <input type="text" id="register-password"  placeholder="********" required/>
+                    <div id='reg-pass-btn' class="show-btn">&#128065;</div>  
+                </div>
+                <error id="reg-pass-error" class="hidden"></error> 
+                <label>Repeat Password</label>
+                <div class="reg-repass-field">
+                    <input type="text" id="register-repeat-password" placeholder="********" required/>
+                    <div id='reg-repass-btn' class="show-btn">&#128065;</div>
+                </div>
+                <error id="reg-repass-error" class="hidden"></error>
+                <div>
+                    <button type="submit" id="create-account" class="confirm-btn">Create Account</button>
+                </div>  
+            </form>
+
+        </div>
+    </section>
+    <section id="account-field" class="account-container">  
+        <div class="container-header">      
+            <div>User Information</div>
+        </div>
+        <div>
+            <form id="edit-inputs" class="edit-input-field"> 
+                <label>Name</label>
+                <input type="text" id="edit-user-name" placeholder="FirstName LastName" required/>        
+                <error id="edit-name-error" class="hidden"></error>
+                <label>Email</label>
+                <input type="text" id="edit-email"  placeholder="google@gmail.com" required/>
+                <error id="edit-mail-error" class="hidden"></error>                
+                <label>Password</label>
+                <div class="edit-pass-field">
+                    <input type="text" id="edit-password"  placeholder="********" required/>
+                    <div id='edit-pass-btn' class="show-btn" style="color: #000000ff;">&#128065;</div>  
+                </div>
+                <error id="edit-pass-error" class="hidden"></error>                
+                <div class ="edit-btn-field">
+                    <button type="text" id="cancel-edit" class="confirm-btn">Cancel</button>    
+                    <div style="width: 2em;"></div>
+                    <button type="submit" id="edit-account" class="btn">Save</button>
+                </div>  
+            </form>
+             <div id="account-data" class="account-data-field"> 
+                <label>Name</label>
+                <info id="user-name">John Clyde</info>
+                <label>Email</label>
+                <info id="user-email">johnclyde@gmail.com</info>
+                <label>Password</label>
+                <info id="user-password">passwordpassword</info>
+                <div class ="acc-btn-field">
+                    <button type="text" id="edit-info" class="confirm-btn">Edit Information</button>
+                    <div style="width: 2em;"></div>
+                    <button type="text" id="log-out" class="btn">Log Out</button>
+                </div>  
+            </div>
+        </div>
+    </section>  
+    <div id="dark-overlay"></div>
+    <section id="created-field" class="created-container">  
+        <div class="container-header">        
+            <div>Successfuly registered into the Akademiya Archives</div>
+        </div>
+        <label>Click anywhere to go back to login menu</label>
+    </section>
+</body>
+<script type="module" src="scripts.js"></script>
+</html>
