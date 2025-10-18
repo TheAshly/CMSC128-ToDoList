@@ -72,6 +72,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.hidden {
+  display: none !important;
+}
 
 @keyframes up-and-down {
     0% {
@@ -151,7 +154,6 @@ header h2 {
 }
 
 #dark-overlay{
-  display: none;
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -164,7 +166,6 @@ header h2 {
 }
 
 .created-container {
-  display: none;
   padding: var(--pad-x-default) ;
   background-color: white;
   color: #2e3f2c;
@@ -183,15 +184,12 @@ header h2 {
     margin-top: var(--pad-x-large);
   }
 }
-.hidden{
-  display: none;
-}
 
 .login-pass-field, .reg-pass-field, .reg-repass-field, .edit-pass-field{
   display: flex;
 }
 
-.show-btn{
+.show-btn {
   font-size: var(--fs-36);
   position: absolute;
   right: 0;
@@ -204,7 +202,6 @@ header h2 {
   
 }
 .register-container{
-  display: none;
   label:nth-child(n+2){
     margin-top: var(--pad-x-default);
   }
@@ -270,12 +267,19 @@ error {
   }
 }
 
-
 .forgot-password {
   padding: var(--pad-x-default);
   font-size: var(--fs-24);
   text-align: center;
   border-bottom: #a8a8a8 2px solid;
+}
+
+#forgot-field {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 100;
 }
 
 .close-btn {
@@ -317,5 +321,4 @@ info{
 }
 
 .edit-input-field, .account-container {
-  display: none;
 }

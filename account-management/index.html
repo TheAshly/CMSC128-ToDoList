@@ -21,7 +21,7 @@
         <div class="container-header">    
             <div>Log into the Akademiya</div>
         </div>
-        <div>
+        <div>   
             <form id="login-inputs" class="login-input-field">    
                 <label>Email</label>
                 <input id="login-email" type="text" placeholder="google@gmail.com" required/>
@@ -29,7 +29,7 @@
                 <div class="login-bottom-container">
                     <label>Password</label>
                     <div class="login-pass-field">
-                        <input id="log-view-password" type="text" placeholder="********" required/>
+                        <input id="log-view-password" type="password" placeholder="********" required/>
                         <div id='log-pass-btn' class="show-btn">&#128065;</div>  
                     </div>
                     <error id="login-pass-error" class="hidden"></error>
@@ -44,7 +44,7 @@
             </div>  
         </div>
     </section>
-    <section id="register-field" class="register-container">       
+    <section id="register-field" class="register-container hidden">       
         <div id='register-close-btn' class="close-btn">&times;</div>   
         <div class="container-header">      
             <div>Register into the Akademiya</div>
@@ -59,13 +59,13 @@
                 <error id="reg-mail-error" class="hidden"></error>
                 <label>Password</label>
                 <div class="reg-pass-field">
-                    <input type="text" id="register-password"  placeholder="********" required/>
+                    <input type="password" id="register-password"  placeholder="********" required/>
                     <div id='reg-pass-btn' class="show-btn">&#128065;</div>  
                 </div>
                 <error id="reg-pass-error" class="hidden"></error> 
                 <label>Repeat Password</label>
                 <div class="reg-repass-field">
-                    <input type="text" id="register-repeat-password" placeholder="********" required/>
+                    <input type="password" id="register-repeat-password" placeholder="********" required/>
                     <div id='reg-repass-btn' class="show-btn">&#128065;</div>
                 </div>
                 <error id="reg-repass-error" class="hidden"></error>
@@ -76,7 +76,7 @@
 
         </div>
     </section>
-    <section id="account-field" class="account-container">  
+    <section id="account-field" class="account-container hidden">  
         <div class="container-header">      
             <div>User Information</div>
         </div>
@@ -85,28 +85,21 @@
                 <label>Name</label>
                 <input type="text" id="edit-user-name" placeholder="FirstName LastName" required/>        
                 <error id="edit-name-error" class="hidden"></error>
-                <label>Email</label>
-                <input type="text" id="edit-email"  placeholder="google@gmail.com" required/>
-                <error id="edit-mail-error" class="hidden"></error>                
-                <label>Password</label>
-                <div class="edit-pass-field">
-                    <input type="text" id="edit-password"  placeholder="********" required/>
-                    <div id='edit-pass-btn' class="show-btn" style="color: #000000ff;">&#128065;</div>  
-                </div>
-                <error id="edit-pass-error" class="hidden"></error>                
+                <label>New Password</label>
+                <input type="password" id="edit-password" required/>        
+
                 <div class ="edit-btn-field">
                     <button type="text" id="cancel-edit" class="confirm-btn">Cancel</button>    
                     <div style="width: 2em;"></div>
                     <button type="submit" id="edit-account" class="btn">Save</button>
-                </div>  
+                </div>
+                  
             </form>
              <div id="account-data" class="account-data-field"> 
                 <label>Name</label>
-                <info id="user-name">John Clyde</info>
+                <info id="user-name"></info>
                 <label>Email</label>
-                <info id="user-email">johnclyde@gmail.com</info>
-                <label>Password</label>
-                <info id="user-password">passwordpassword</info>
+                <info id="user-email"></info>
                 <div class ="acc-btn-field">
                     <button type="text" id="edit-info" class="confirm-btn">Edit Information</button>
                     <div style="width: 2em;"></div>
@@ -115,13 +108,23 @@
             </div>
         </div>
     </section>  
-    <div id="dark-overlay"></div>
-    <section id="created-field" class="created-container">  
-        <div class="container-header">        
-            <div>Successfuly registered into the Akademiya Archives</div>
+    
+    <div id="dark-overlay" class="hidden"></div>
+    <section id="forgot-field" class="register-container hidden">       
+        <div id='forgot-close-btn' class="close-btn">&times;</div>   
+        <div class="container-header">      
+            <div>Forgot Password</div>
         </div>
-        <label>Click anywhere to go back to login menu</label>
-    </section>
+        <div>
+            <form id="forget-inputs" class="register-input-field"> 
+                <label>Email</label>
+                <input type="text" id="forgot-email"  placeholder="google@gmail.com" required/>
+                <error id="reg-mail-error" class="hidden"></error>
+                <div>
+                    <button type="submit" id="find-password-account" class="confirm-btn">Send Confirmation Email</button>
+                </div>  
+            </form>
+        </div>
 </body>
-<script type="module" src="scripts.js"></script>
+<script src="index.js" type="module"></script>
 </html>
