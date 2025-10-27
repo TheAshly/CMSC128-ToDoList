@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://kit.fontawesome.com/4ab18c6505.js" crossorigin="anonymous"></script>
+    <title>To-do List</title>
+</head>
+<body>
+    <img class="bg-img" src="images/sumeru.jpg"/> 
+    <header>
+        <hgroup>
+            <h1>TODO APP</h1>
+            <h2>An app that keeps track of all the tasks for you</h2>
+        </hgroup>
+    </header>
+
+    <main class="todo-container">
+        <section class="todo-header">
+            <div class="new-task-btn-container">
+                <button class="new-task-btn primary-btn">New Task +</button>
+            </div> 
+            <div class="filters-container">
+                <p>Sort by: </p>
+                <select class="sort-dropdown">
+                    <option value="date-added">Date Added</option>
+                    <option value="date-due">Date Due</option>
+                    <option value="priority">Priority</option>
+                </select>
+            </div>
+        </section>  
+
+        <table class="task-list">
+            <thead>
+                <tr>
+                    <th class="checkbox"></th>
+                    <th class="name">TASKS</th>
+                    <th class="priority">PRIORITY</th>
+                    <th class="datetime-due">DUE ON</th>
+                    <th class="datetime-added">ADDED AT</th>
+                    <th class="utils"></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+
+    <section class="add-task-modal-container modal-container hidden">
+        <form class="add-modal modal">
+            <div class="modal-header">
+                <h3>Add Task</h3>
+                <div class="close-btn-container">
+                    <img class="close-btn" src="images/close.png">
+                </div>
+            </div>
+            
+            <div class="form-element name-section">    
+                <label>TASK NAME</label>
+                <input type="text" name="name" class="name-field" placeholder="Enter Name"/>
+                <div class="name-error error"></div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-element priority-section">
+                    <label>PRIORITY</label>
+                    <select name="priority" class="priority-field" placeholder="Select Priority">
+                        <option value="HIGH">High</option>
+                        <option value="MEDIUM" selected>Medium</option>
+                        <option value="LOW">Low</option>
+                    </select>
+                    <div class="priority-error error"></div>
+                </div>
+                <div class="form-element date-section">
+                    <label>DUE DATE</label>
+                    <input type="date" name="date-due" class="date-field" placeholder="Select Date"/>
+                    <div class="date-error error"></div>
+                </div>
+                
+                <div class="form-element time-section">
+                    <label>DUE TIME</label>
+                    <input type="time" name="time-due" class="time-field" placeholder="Select Time"/>
+                    <div class="time-error error"></div>
+                </div>
+            </div>
+
+            <div class="form-element button-section">
+                <button class="add-task-btn primary-btn" type="submit">Add Task</button>
+            </div>
+        </form>
+    </section>
+
+   <section class="edit-task-modal-container modal-container hidden">
+        <form class="edit-modal modal">
+            <div class="modal-header">
+                <h3>Edit Task</h3>
+                <div class="close-btn-container">
+                    <img class="close-btn" src="images/close.png">
+                </div>   
+            </div>
+            <div class="form-element" style="display: none;">
+                <input type="text" name="id" class="id-field"/>
+            </div>
+            <div class="form-element name-section">    
+                <label>TASK NAME</label>
+                <input type="text" name="name" class="name-field" placeholder="Enter Name" required/>
+                <div class="name-error error"></div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-element priority-section">
+                    <label>PRIORITY</label>
+                    <select name="priority" class="priority-field" placeholder="Select Priority">
+                        <option value="HIGH">High</option>
+                        <option value="MEDIUM" selected>Medium</option>
+                        <option value="LOW">Low</option>
+                    </select>
+                    <div class="priority-error error"></div>
+                </div>
+                <div class="form-element date-section">
+                    <label>DUE DATE</label>
+                    <input type="date" name="date-due" class="date-field" placeholder="Select Date" required/>
+                    <div class="date-error error"></div>
+                </div>
+                
+                <div class="form-element time-section">
+                    <label>DUE TIME</label>
+                    <input type="time" name="time-due" class="time-field" placeholder="Select Time" required/>
+                    <div class="time-error error"></div>
+                </div>
+            </div>
+            <div class="form-element button-section">
+                <button class="edit-task-btn primary-btn" type="submit">Edit Task</button>
+            </div>
+        </form>
+    </section>
+ 
+    <section class="delete-task-modal-container modal-container hidden">
+        <div class="delete-modal modal">
+           <div class="modal-header">
+                <h3>Confirm Delete</h3>
+            </div>
+            <div class="id-field" style="display: none;"></div>
+            <div class="modal-body">
+                Are you sure you want to delete the task <span class="name-field"></span>?
+            </div>
+            <div class="modal-buttons">
+                <form class="delete-task-btn-container">
+                    <button class="delete-task-btn primary-btn" type="submit">Delete</button>
+                </form>
+                <div class="cancel-btn-container">              
+                    <button class="cancel-btn secondary-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="alert-container hidden">
+        <div class="content"><img class="alert-mark" src="images/check.png"><span class="alert-message"></span></div>
+        <div class="close-btn-container">                    
+            <img class="close-btn" src="images/close.png">
+        </div>
+    </section>
+
+    <section class="toast-container hidden">
+        <div class="content">
+            <img class="toast-mark" src="images/check.png">
+            <span>Task <span class="task-name"></span> has been deleted. If you want to undo this action, <a class="undo-delete" href="/">click here!</a></p>        
+        </div>    
+        <div class="close-btn-container">                    
+            <div class="close-btn">&times;</div>
+        </div>
+        <div class="recently-deleted-element hidden">
+            <p class="checked"></p>
+            <p class="date-added"></p>
+            <p class="date-due"></p>
+            <p class="priority"></p>
+        </div>          
+    </section>
+
+</body>
+<script type = "module" src="scripts/index.js"></script>
+</html>

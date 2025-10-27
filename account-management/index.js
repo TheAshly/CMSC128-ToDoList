@@ -22,7 +22,7 @@ import {
 
 // configs
 const firebaseConfig = {
-    // API these nuts
+// Config deez nuts
 };
 
 const app = initializeApp(firebaseConfig);
@@ -156,13 +156,12 @@ forgotCloseBtn.addEventListener("click", async e => {
 searchPassword.addEventListener("click", async e => {
     e.preventDefault();
     try {
-        const email = document.getElementById("forgot-email").value.trim();        
-        console.log(email);
+        const email = document.getElementById("forgot-email").value.trim();    
+        console.log("Sent password to " + email);
         await sendPasswordResetEmail(auth, email);
     } catch (error) {
         console.error("Error sending password reset email:", error.message);
     }
-
 });
 
 

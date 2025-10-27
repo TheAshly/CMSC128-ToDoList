@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=League+Spartan:wght@100..900&display=swap');
+
+/*
+  Hello Keith, this will be where you put your styles
+  
+  Things to note:
+
+  :root is where variables are put with their own respective values (like color, font-style, etc.)
+  :root also contains your default styles for the webpage such as font size and font family
+
+  A CSS Variable are those with two dashes (--) before the name. Ex: --color-header
+  CSS Variable Declaration:    --varname: value;
+  You can also call these variables by using var(var-name) such as var(--color-header)
+  For more information of CSS Variables, refer to the some styles below
+
+  Sometimes, it is best to work with a system as you do not have to micro-edit styles. By micro-edit, 
+  I mean an experience like changing padding from 10px to 9px, then changing it again to 8px. That takes
+  a lot of time. Rather, you have presets to choose from so that styling does not take time as you only have
+  limited options. The presets are the variables in :root down below. You can add variables if you want.
+
+  If you don't want to use it, or you want to start your styling from scratch, it's ok, just remove the :root.
+
+  Goodluck! :>  -Jave
+  */
+
+:root {
+  /* colors */
+  --color-header: rgb(23, 23, 23);
+  --color-body: rgb(255, 255, 255);
+  --color-primary: rgb(46, 64, 44);
+  --color-secondary: rgb(73, 76, 107); 
+  --border-color-1: rgb(227, 228, 241);
+  --border-color-danger: rgb(255, 10, 10);
+  --border-color-warning: rgb(219, 215, 0);
+  --border-color-ok: rgb(21, 130, 2);
+  --color-danger: rgba(255, 10, 10, 0.8);
+  --color-warning: rgba(117, 115, 36, 0.8);
+  --color-ok: rgb(21, 130, 2); 
+  --modal-cover-color: rgba(24, 35, 23, 0.7); 
+  
+  /* font-size */
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-30: 30px;
+  --fs-36: 36px;
+  --fs-48: 48px;
+  --fs-60: 60px;
+  --fs-72: 72px;
+
+  /* font-weight */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
+
+  /* font-family */
+  --ff-heading:  'Albert Sans', Helvetica, sans-serif;
+  --ff-body:    'League Spartan', Arial, sans-serif;
+
+  /* horizontal padding */
+  --pad-x-xxsmall: 4px;
+  --pad-x-xsmall: 8px;
+  --pad-x-small: 12px;
+  --pad-x-default: 16px;
+  --pad-x-large: 25px;
+  --pad-x-xlarge: 40px;
+  --pad-x-xxlarge: 64px;
+  
+  /* vertcal padding */
+  --pad-y-xxsmall: 2px;
+  --pad-y-xsmall: 4px;
+  --pad-y-small: 6px;
+  --pad-y-default: 8px;  
+  --pad-y-large: 13px;
+  --pad-y-xlarge: 20px;
+  --pad-y-xxlarge: 32px;
+
+  /* borders */
+  --border-radius: 2px;
+
+  /* margin */
+  --mar-xxsmall: 4px;
+  --mar-xsmall: 7px;
+  --mar-small: 10px;
+  --mar-default: 16px;  
+  --mar-large: 25px;
+  --mar-xlarge: 40px;
+  --mar-xxlarge: 60px;
+  --mar-section-separation-default: 100px;
+  --mar-section-separation-large: 150px;
+
+  /* default html styles*/
+  font-size: var(--fs-14);
+  font-family: var(--ff-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* reset
+
+  A reset is just there to remove all default behavior from all elements.
+  In this case, removing default margin and padding spaces.
+
+  "box-sizing: border-box;" is more interesing 
+  Basically, by default, box-sizing is set to content-box. May be important
+  to know about this.
+
+  It means that if you set a width/height of an element, the dimension of the elements, 
+  its padding dimension, and border dimensions must be enclosed in that width/height. Refer 
+  to mozilla docs :>
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*  PAGE STYLES  */
+h1, h2, h3, h4, h5, h6, th, td {
+    font-size: var(--fs-14);
+    font-weight: var(--fw-regular);
+}
+
+button {
+    box-shadow: none;
+    border: none;
+    border-radius: 2px;
+}
+
+/* CLASS STYLES */
+.hidden {
+    display: none !important;
+}
+
+.primary-btn {
+    padding-block: var(--pad-y-default);
+    background-color: var(--color-primary);
+    color: white;
+    border: solid 2px var(--color-primary); 
+    font-weight: var(--fw-semi-bold);
+    letter-spacing: 0.5px;
+}
+.secondary-btn {
+    padding-block: var(--pad-y-default);
+    background-color: white;
+    color: var(--color-primary);
+    border: solid 2px var(--color-primary); 
+    font-weight: var(--fw-semi-bold);
+    letter-spacing: 0.5px;
+}
+
+
+/* Example styles (uncomment or remove if you want) */
+.bg-img {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+header {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-header);
+}
+header hgroup {
+  width: 800px;
+}
+header h1 {
+  margin-top: var(--mar-xxlarge);
+  font-size: var(--fs-36);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+  color: white;
+}
+header h2 {
+  font-size: var(--fs-18);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.5px;
+  color: #ABABAB;
+}
+
+.todo-container {
+    width: 800px;   
+    height: 500px;
+    position: relative;
+    top: -120px;
+    margin: auto;
+    box-shadow: 0px 0px 5px #BCBCBC;
+    border-radius: var(--border-radius);
+    background-color: white;   
+    padding: var(--pad-y-xxlarge) var(--pad-x-large);
+}
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+}
+.new-task-btn {
+    width: 150px;
+}
+.filters-container {
+    display: grid;
+    grid-template-columns: 50px auto;
+    align-items: center;
+}
+.sort-dropdown {
+    width: 120px;
+    appearance: none;
+    background-image: url(images/arrow-down.png);
+    background-size: 12px;
+    background-position: right var(--pad-x-small) center;
+    background-repeat: no-repeat;
+    padding-inline: var(--pad-x-small);
+    padding-block: var(--pad-y-small);
+
+}
+.task-list {
+    width: 100%;
+    margin-top: var(--mar-default);
+    border-collapse: collapse;
+}
+tbody {
+    max-height: calc(500px - (var(--mar-default) + 2 * var(--pad-x-xxlarge)));
+    overflow-y: auto;
+    display: block;
+}
+tr {    
+    display: grid;
+    grid-template-columns: 30px 6fr 2fr 3fr 3fr 2fr;
+    border-bottom: solid 2px var(--border-color-1);
+    padding-block: var(--pad-y-default);
+}
+th, td {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: var(--pad-x-small);
+}
+th {
+    color: var(--color-secondary);
+    opacity: 0.8;
+    font-size: var(--fs-12);
+    letter-spacing: 1px;
+    font-weight: var(--fw-bold);   
+}
+td {
+    width: 100%;
+    font-size: var(--fs-16);
+    color: var(--color-primary);
+    position: relative;
+}
+
+tr.strikeout td:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 2px solid var(--color-secondary);
+    width: 100%;
+}
+tr.strikeout td {
+    opacity: 50%;
+}
+
+tr .name, td .name {
+    font-weight: var(--fw-bold);
+    align-items: flex-start;
+}
+
+.priority {
+    font-size: var(--fs-12);
+    font-weight: var(--fw-bold);
+    letter-spacing: 1px;
+}
+.priority-type {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    padding-block: var(--pad-y-xxsmall);
+    padding-inline: var(--pad-x-small);
+
+}
+
+.priority-ok {
+    color: var(--color-ok);
+}
+
+.priority-warning {
+    color: var(--color-warning);
+}
+
+.priority-danger {
+    color: var(--color-danger);
+
+}
+
+.datetime-added .time, .datetime-due .time {
+    margin-top: var(--mar-xxsmall);
+    font-size: var(--fs-12);
+}
+.utils {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    color: var(--color-primary);
+}
+
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: 100;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--modal-cover-color);
+}
+.modal {
+    width: 500px;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 5px #BCBCBC;
+    padding-block: var(--pad-y-xlarge);
+    padding-inline: var(--pad-x-large);
+    background-color: white;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--mar-default);
+}
+.modal-header h3 {
+    font-size: var(--fs-20);
+    font-weight: var(--fw-semi-bold);
+    color: var(--color-primary);
+}
+.modal-header .close-btn {
+    width: 12px;
+}
+.modal .form-row {
+    display: flex;
+    margin-block: var(--mar-default);
+}
+.modal .form-element{
+    padding-inline: var(--pad-x-small);
+} 
+
+.modal label {
+    color: var(--color-secondary);
+    opacity: 0.8;
+    font-size: var(--fs-12);
+    font-weight: var(--fw-semi-bold);
+    letter-spacing: 1px;    
+}
+.modal input,  .modal select {
+    width: 100%;
+    height: 30px;
+    padding-inline: var(--pad-x-small);
+    letter-spacing: 0.5px;   
+}
+
+.add-task-btn, .edit-task-btn {
+    width: 100%;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: right;
+    margin-top: var(--mar-default);
+}
+.delete-task-btn, .cancel-btn {
+    width: 100px;
+    margin-inline-start: var(--mar-small);
+}
+
+.alert-container, .toast-container {
+    min-width: 400px;
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius:var(--border-radius);
+    padding-block: var(--pad-y-default);
+    padding-inline: var(--pad-x-small);
+    background-color: white;
+}
+
+.alert-container .content, .toast-container .content {
+    display: flex;
+    align-items: center;
+}
+.alert-mark, .toast-mark {
+    width: 32px;
+    height: 32px;
+    margin-right: var(--mar-default);
+}
+
+.alert-container .close-btn-container, 
+.toast-container .close-btn-container {
+    margin-left: var(--mar-xlarge);
+}
+
+.alert-container .close-btn,
+.toast-container .close-btn {
+    width: 12px;
+}
+
+input, select, .close-btn, .primary-btn, .secondary-btn, .checkbox, .utils > * {
+    cursor: pointer;
+}
+
+.error {
+    font-size: var(--fs-12);
+    padding-block: var(--pad-y-xxsmall);
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
