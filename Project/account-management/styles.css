@@ -322,3 +322,15 @@ info{
 
 .edit-input-field, .account-container {
 }
+.personal-tdl, .collaborative-tdl {
+  .btn{
+    width: 100%;
+    padding: var(--pad-x-default);
+    margin-top: var(--mar-default);
+    margin-bottom: var(--mar-default);
+    background-color: #2e3f2c;
+    font-family: var(--ff-body);
+    font-size: var(--fs-30);
+    color: white;
+  }
+}

@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="todo-list/styles.css">
     <script src="https://kit.fontawesome.com/4ab18c6505.js" crossorigin="anonymous"></script>
     <title>To-do List</title>
 </head>
 <body>
-    <img class="bg-img" src="images/sumeru.jpg"/> 
+    <img class="bg-img" src="todo-list/images/sumeru.jpg"/> 
     <header>
         <hgroup>
-            <h1>TODO APP</h1>
-            <h2>An app that keeps track of all the tasks for you</h2>
+            <h1>AKADEMIYA TODO LISTS</h1>
+            <h2>An app to support you in your day to day in the Akademiya</h2>
         </hgroup>
+        <button class="account-btn">See Account</button>
+        <button class="logout-btn">Log Out</button>
     </header>
 
     <main class="todo-container">
+        <navbar class="nav-container">
+            <selection class="destination personal"><h4>Personal TDL</h4></selection>
+            <selection class="destination collabing"><h4>Collaborative TDL</h4></selection>
+        </navbar>
         <section class="todo-header">
             <div class="new-task-btn-container">
                 <button class="new-task-btn primary-btn">New Task +</button>
@@ -52,7 +58,7 @@
             <div class="modal-header">
                 <h3>Add Task</h3>
                 <div class="close-btn-container">
-                    <img class="close-btn" src="images/close.png">
+                    <img class="close-btn" src="todo-list/images/close.png">
                 </div>
             </div>
             
@@ -96,7 +102,7 @@
             <div class="modal-header">
                 <h3>Edit Task</h3>
                 <div class="close-btn-container">
-                    <img class="close-btn" src="images/close.png">
+                    <img class="close-btn" src="todo-list/images/close.png">
                 </div>   
             </div>
             <div class="form-element" style="display: none;">
@@ -157,15 +163,15 @@
     </section>
 
     <section class="alert-container hidden">
-        <div class="content"><img class="alert-mark" src="images/check.png"><span class="alert-message"></span></div>
+        <div class="content"><img class="alert-mark" src="todo-list/images/check.png"><span class="alert-message"></span></div>
         <div class="close-btn-container">                    
-            <img class="close-btn" src="images/close.png">
+            <img class="close-btn" src="todo-list/images/close.png">
         </div>
     </section>
 
     <section class="toast-container hidden">
         <div class="content">
-            <img class="toast-mark" src="images/check.png">
+            <img class="toast-mark" src="todo-list/images/check.png">
             <span>Task <span class="task-name"></span> has been deleted. If you want to undo this action, <a class="undo-delete" href="/">click here!</a></p>        
         </div>    
         <div class="close-btn-container">                    
@@ -180,5 +186,5 @@
     </section>
 
 </body>
-<script type = "module" src="scripts/index.js"></script>
+<script type = "module" src="todo-list/scripts/index.js"></script>
 </html>
