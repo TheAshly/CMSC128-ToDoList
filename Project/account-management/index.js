@@ -22,7 +22,7 @@ import {
 
 // configs
 const firebaseConfig = {
-// Config deez nuts
+    //firebaseConfig goes boom
 };
 
 const app = initializeApp(firebaseConfig);
@@ -91,18 +91,11 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 // errors 
-const EMPTYFIELD = "Please enter an appropriate input";
-const INCORRECTEMAIL = "Email must contain @gmail.com";
-const NULLEMAIL = "Email doesn't exist";
-const WRONGPASS = "Wrong password";
+
 const EMAILEXISITNG = "Email already exists";
 const INCORRECTPASS = "Password is not the same";
 const NOACCOUNT = "Email or password is incorrect";
 const SMALLPASSWORDLENGTH = "Password must be a length of seven or higher";
-const USERLOGGEDIN = "userloggedin";
-const ACCOUNTNAME = "accountname";
-const ACCOUNTEMAIL = "accountemail";
-const ACCOUNTPASS = "accountpassword";
 
 const registerContainer = document.getElementById("register-field");
 const loginContainer = document.getElementById("login-field");
@@ -115,12 +108,16 @@ toLoginContainer.addEventListener("click", e => {
     e.preventDefault();
     registerContainer.classList.add("hidden");
     loginContainer.classList.remove("hidden");
+
+    registerForm.reset();
 });
 
 toRegisterContainer.addEventListener("click", e => {
     e.preventDefault();
     registerContainer.classList.remove("hidden");
     loginContainer.classList.add("hidden");
+
+    loginForm.reset();
 });
 
 
@@ -139,6 +136,7 @@ const editBtn = document.getElementById("edit-info");
 const cancelEditBtn = document.getElementById("cancel-edit");
 const logoutBtn = document.getElementById("log-out");
 const submitEditBtn = document.getElementById("edit-account");
+const personalBtn = document.getElementById("personal-tdl");
 const darkOverlay = document.getElementById("dark-overlay");
 
 forgotPasswordLink.addEventListener("click", async e => {
@@ -203,7 +201,12 @@ registerBtn.addEventListener("click", async e => {
         await setDoc(doc(db, "Accounts", userCredential.user.uid), {
             uid: userCredential.user.uid,
             username: username,
-            email: email
+            email: email,
+            collabing: {
+                state: false,
+                location: userCredential.user.uid
+            },
+            collaborators: [] 
         });
     } catch (e) {
         if (e.code === "auth/email-already-in-use") {
@@ -267,5 +270,9 @@ logoutBtn.addEventListener("click", async e => {
     homeContainer.classList.add("hidden");
     registerContainer.classList.add("hidden");    
     loginContainer.classList.remove("hidden");
+})
+
+personalBtn.addEventListener("click", e => {
+    window.location.href = "/";
 })
 

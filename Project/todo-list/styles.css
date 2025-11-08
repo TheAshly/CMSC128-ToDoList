@@ -173,14 +173,15 @@ header {
   width: 100%;
   height: 35vh;
   display: flex;
-  justify-content: center;
   background-color: var(--color-header);
+  z-index: -1;
 }
 header hgroup {
-  width: 800px;
+  width: 90vh;
+  margin-left: 18%;
 }
 header h1 {
-  margin-top: var(--mar-xxlarge);
+  margin-top: var(--mar-section-separation-default);
   font-size: var(--fs-36);
   font-family: var(--ff-heading);
   font-weight: var(--fw-bold);
@@ -193,23 +194,67 @@ header h2 {
   letter-spacing: 0.5px;
   color: #ABABAB;
 }
+header .account-btn, header .logout-btn {
+    margin-top: var(--mar-section-separation-default);
+    margin-right: var(--mar-default);
+    width: 10%;
+    height: 40px;
+    padding: var(--pad-x-small);
+    background-color: #4a7446;
+    font-family: var(--ff-body);
+    font-size: var(--fs-20);
+    color: white;
+}
 
 .todo-container {
-    width: 800px;   
+    width: 900px;   
     height: 500px;
     position: relative;
-    top: -120px;
+    top: -90px;
     margin: auto;
-    box-shadow: 0px 0px 5px #BCBCBC;
+    box-shadow: 0px 0px 5px #ffffff;
     border-radius: var(--border-radius);
     background-color: white;   
     padding: var(--pad-y-xxlarge) var(--pad-x-large);
 }
+.nav-container {
+    width: 100%;   
+    height: 40px;
+    position: absolute;
+    top: -38px;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap; 
+}
+.destination {
+    flex-grow: 1;
+    padding-top: var(--pad-x-small);
+    padding-left: var(--pad-x-default);
+    border-radius: 25px 25px 0 0; 
+    background-color: rgb(192, 192, 192); 
+    vertical-align: bottom;
+    h4{
+        font-family: var(--ff-heading);
+        font-weight: var(--fw-bold);
+        font-size: var(--fs-16);
+        color: var(--color-secondary);
+        opacity: 0.8;
+        letter-spacing: 1px;
+    }
+}
+.selected{
+    background-color: white; 
+    box-shadow: 
+        0px 0px 4px #ffffff, /* Top glow (offset up) */
+        0px 0px 4px rgba(255, 255, 255, 0.194); ;    /* Side glow */
+}
+
 .todo-header {
     display: flex;
     justify-content: space-between;
 }
 .new-task-btn {
+    font-family: var(--ff-heading);
     width: 150px;
 }
 .filters-container {

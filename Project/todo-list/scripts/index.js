@@ -6,6 +6,7 @@
     await import('./backend.js');  
     await import('./delegator.js');
     await import('./alert.js');   
+    await import('./load-navbar.js'); 
     await import('./load-tasks.js'); 
     await import('./add-task.js');  
     await import('./edit-task.js');  
