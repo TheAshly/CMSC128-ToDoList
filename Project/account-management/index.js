@@ -22,7 +22,7 @@ import {
 
 // configs
 const firebaseConfig = {
-    //firebaseConfig goes boom
+    // we need a firebase config file for this para no need na mag sagi ctrl c + ctrl v  :>
 };
 
 const app = initializeApp(firebaseConfig);
@@ -273,6 +273,6 @@ logoutBtn.addEventListener("click", async e => {
 })
 
 personalBtn.addEventListener("click", e => {
-    window.location.href = "/";
+    window.location.href = "/todo-list.html";
 })
 

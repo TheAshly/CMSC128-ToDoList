@@ -83,7 +83,7 @@ Delegator.getMany("edit-task-btn").forEach(element => {
         }
 
         await editTask(id, name, priority, dateDue + "T" + timeDue);
-        window.location.href = `/?alert=EDITTED_SUCCESSFULLY&task=${name}`;
+        window.location.href = `/todo-list.html?alert=EDITTED_SUCCESSFULLY&task=${name}`;
     });
 });
 

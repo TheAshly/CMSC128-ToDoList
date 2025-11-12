@@ -18,7 +18,7 @@ import {
 
 
 const firebaseConfig = {
-    //firebaseConfig goes boom
+    // we need a firebase config file for this para no need na mag sagi ctrl c + ctrl v  :>
 };
 
 const app = initializeApp(firebaseConfig);
@@ -206,37 +206,42 @@ export async function resetLocation() {
     }); 
 }
 
-// Unused Functions Currently (Untested daan wala pani sila html, css, kag js)
-// Assume ko na ga href ni tanan after run
-
-// Check if ga work if not need guro Promise
-export async function LogoutCurrUser() {
-    await signOut(auth);
-}
-
 // Assume na if may show all ta like daw same sa tasks, and may remove task
 // diri may remove collaborator and ang gina accept ya nga parameter
 // is ang UID sang gin remove 
 // Wala ni dapat button kung wala ang user sa ila own na CTDL (Collabing TDL)   
 export async function removeCollaborator(idArg) {
-    return new Promise((resolve, reject) => {
-        onAuthStateChanged(auth, async (user) => {  
-            const docRef = doc(db, "Accounts", user.uid);
-            const snapshot = await getDoc(docRef);
-            if (snapshot.exists()) {
-                const data = snapshot.data()
-                const tempCollabArray = data.collaborators
-                tempCollabArray = tempCollabArray.filter(partners => partners != idArg);
-                await updateDoc(docRef, {
-                    collaborators : tempCollabArray
-                });    
-                resolve();
-            } else {
-                console.error(`Document ${idArg} does not exist.`);
-                reject();
-            }
-        });  
-    }); 
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+        console.error("No authenticated user.");
+        return false;
+    }
+
+    try {
+        const docRef = doc(db, "Accounts", user.uid);
+        const snapshot = await getDoc(docRef);
+
+        if (!snapshot.exists()) {
+            console.error(`Document for user ${user.uid} does not exist.`);
+            return false;
+        }
+
+        const data = snapshot.data();
+        let tempCollabArray = data.collaborators || [];
+        tempCollabArray = tempCollabArray.filter(uid => uid !== idArg);
+
+        await updateDoc(docRef, {
+           collaborators: tempCollabArray
+        });
+
+        console.log(`Collaborator ${idArg} removed.`);
+        return true;
+    } catch (error) {
+        console.error("Error removing collaborator:", error);
+        return false;
+    }
 }
 
 // Assume na if may show all ta like daw same sa tasks, and may add task
@@ -246,69 +251,121 @@ export async function removeCollaborator(idArg) {
 // Ga return sya guro boolean meaning if ara ang gin try add sa system or wala
 export async function addCollaborator(collaborator) {
     return new Promise((resolve, reject) => {
-        onAuthStateChanged(auth, async (user) => {  
-            const databases = await getMainDatabase();
-            databases.forEach(async database => {
-                if(database.username == collaborator || database.email == collaborator){
-                    const docRef = doc(db, "Accounts", user.uid);
-                    const snapshot = await getDoc(docRef);
-                    if (snapshot.exists()) {
-                        const data = snapshot.data()
-                        const tempCollabArray = data.collaborators
-                        tempCollabArray = tempCollabArray.push(database.uid);
-                        await updateDoc(docRef, {
-                            collaborators : tempCollabArray
-                        });    
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                reject("No authenticated user.");
+                return;
+            }
+            try {
+                const databases = await getMainDatabase();
+                let found = false;
+
+                for (const database of databases) {
+                    if (
+                        database.uid !== user.uid &&
+                        (database.username === collaborator || database.email === collaborator)
+                    ) {
+                        found = true;
+
+                        const docRef = doc(db, "Accounts", user.uid);
+                        const snapshot = await getDoc(docRef);
+
+                        if (!snapshot.exists()) {
+                            resolve(false);
+                            return;
+                        }
+
+                        const data = snapshot.data();
+                        if (data.collaborators.includes(database.uid)) {
+                            resolve(false);
+                            return;
+                        }
+
+                        const tempCollabArray = Array.isArray(data.collaborators)
+                        ? [...data.collaborators, database.uid]
+                        : [database.uid];
+        
+                        await updateDoc(docRef, { collaborators: tempCollabArray });
                         resolve(true);
-                    } else {
-                        console.error(`Document ${idArg} does not exist.`);
-                        reject(false);
+                        return; 
                     }
                 }
-            }); 
-            reject(false);
-        });  
+                if (!found) resolve(false);
+            } catch (error) {
+                console.error("Error adding collaborator:", error);
+                reject(false);
+            }
+        });
     }); 
 }
 
 // Gin baylo lng ikaw naman gin remove kung diin kaman currently
 export async function leaveCollaboratorTDL() {  
-    return new Promise((resolve, reject) => {
-        onAuthStateChanged(auth, async (user) => {  
-            const docRef = doc(db, "Accounts", currentIDLocation);
-            const snapshot = await getDoc(docRef);
-            if (snapshot.exists()) {
-                const data = snapshot.data()
-                const tempCollabArray = data.collaborators
-                tempCollabArray = tempCollabArray.filter(partners => partners != user.uid);
-                await updateDoc(docRef, {
-                    collaborators : tempCollabArray
-                });    
-                await resetLocation();
-                resolve();
-            } else {
-                console.error(`Document ${idArg} does not exist.`);
-                reject();
-            }       
-        });  
-    }); 
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+        console.error("No authenticated user.");
+        return false;
+    }
+
+    try {
+        const docRef = doc(db, "Accounts", currentIDLocation);
+        const snapshot = await getDoc(docRef);
+
+        if (!snapshot.exists()) {
+            console.error(`Document for user ${user.uid} does not exist.`);
+            return false;
+        }
+
+        const data = snapshot.data();
+        let tempCollabArray = data.collaborators || [];
+        tempCollabArray = tempCollabArray.filter(uid => uid !== user.uid);
+
+        await updateDoc(docRef, {
+           collaborators: tempCollabArray
+        });
+        await resetLocation();
+        
+        return true;
+    } catch (error) {
+        console.error("Error leaving collaboration:", error);
+        return false;
+    }
+     
 }
 
-// Gina return ya ang array sang username daan naka uid ang array na stores sa database
-export async function getCollaborators() {  
+// Gina return ya ang array sang email daan naka uid ang array na stores sa database
+export async function getCollaborators() {
     const docRef = doc(db, "Accounts", currentIDLocation);
     const snapshot = await getDoc(docRef);
 
-    if (snapshot.exists()) {
-        let tempNameArray = [];
-        const collaboratorsArray = snapshot.data().collaborators
-        for (const collaborator of collaboratorsArray) {
-            const colData = await getDocs(collection(db, "Accounts", collaborator));
-            tempNameArray.push(colData.data().username)
-        }
-        return tempNameArray; 
-    } else {
-        console.error(`Document ${idArg} does not exist.`);
+    if (!snapshot.exists()) {
+        console.error(`Document ${currentIDLocation} does not exist.`);
+        return [];
     }
+
+    const collaboratorsArray = snapshot.data().collaborators || [];
+    const collaboratorInfo = [];
+
+    for (const collaboratorID of collaboratorsArray) {
+
+        const collaboratorRef = doc(db, "Accounts", collaboratorID);
+        const collaboratorSnap = await getDoc(collaboratorRef);
+
+        if (collaboratorSnap.exists()) {
+           const collaboratorData = collaboratorSnap.data();
+            collaboratorInfo.push({
+                id: collaboratorID,
+                username: collaboratorData.username,
+                email: collaboratorData.email 
+            });
+        }
+    }
+    return collaboratorInfo;
 }
 
+export async function logoutUser() {
+    await signOut(auth);
+    window.location.href = "/"; 
+}

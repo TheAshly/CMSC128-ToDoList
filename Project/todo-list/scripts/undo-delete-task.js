@@ -46,7 +46,7 @@ Delegator.get("undo-delete-btn").addEventListener("click", async e => {
         Delegator.getChild("toast-container", ".date-due").textContent = 
         Delegator.getChild("toast-container", ".priority").textContent = "";    
 
-    window.location.href = `/?alert=UNDO_TASK_DELETED_SUCCESSFULLY&task=${name}`;    
+    window.location.href = `/todo-list.html?alert=UNDO_TASK_DELETED_SUCCESSFULLY&task=${name}`;    
 });
 
 

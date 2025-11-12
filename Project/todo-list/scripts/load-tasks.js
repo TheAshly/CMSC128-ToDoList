@@ -6,7 +6,7 @@ Delegator.delegate(".sort-dropdown", "sort-dropdown");
 
 Delegator.get("sort-dropdown").addEventListener("change", e => {
     e.preventDefault("");  
-    window.location.href = `/?sortby=${Delegator.get("sort-dropdown").value}`;    
+    window.location.href = `/todo-list.html?sortby=${Delegator.get("sort-dropdown").value}`;    
 });
 
 

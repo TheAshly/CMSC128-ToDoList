@@ -253,9 +253,9 @@ header .account-btn, header .logout-btn {
     display: flex;
     justify-content: space-between;
 }
-.new-task-btn {
+.new-task-btn-container button {
     font-family: var(--ff-heading);
-    width: 150px;
+    width: 170px;
 }
 .filters-container {
     display: grid;
@@ -421,7 +421,8 @@ tr .name, td .name {
     letter-spacing: 0.5px;   
 }
 
-.add-task-btn, .edit-task-btn {
+.add-task-btn, .edit-task-btn, .add-collab-btn{
+    margin-top: var(--mar-xxsmall);
     width: 100%;
 }
 .modal-buttons {
@@ -479,15 +480,16 @@ input, select, .close-btn, .primary-btn, .secondary-btn, .checkbox, .utils > * {
     color: red;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.manage-collaborators-modal, .view-collaborators-modal {
+    width: 400px;
+}
+.manage-collaborators-modal table, .view-collaborators-modal table {
+    width: 100%;
+}
+.manage-collaborators-modal tr, .view-collaborators-modal tr {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+}
+.new-collaborator-btn, .leave-todo-list-btn {
+    width: 100%;
+}

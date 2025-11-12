@@ -13,4 +13,7 @@
     await import('./check-task.js');   
     await import('./delete-task.js'); 
     await import('./undo-delete-task.js'); 
+    await import('./navigation.js');
+    await import('./manage-collaborator.js'); 
+    await import('./view-collaborator.js'); 
 })();

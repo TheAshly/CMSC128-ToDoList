@@ -67,7 +67,7 @@ Delegator.get("create-task-btn").addEventListener("click", async e => {
 
     await addTask(name, priority, dateNow + "T" + timeNow, dateDue + "T" + timeDue);
 
-    window.location.href = `/?alert=ADDED_SUCCESSFULLY&task=${name}`;
+    window.location.href = `/todo-list.html?alert=ADDED_SUCCESSFULLY&task=${name}`;
 
 });
 

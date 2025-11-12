@@ -34,7 +34,7 @@ Delegator.getMany("delete-task-btn").forEach(element => {
         const task = await getTask(id);
     
         await deleteTask(id);    
-        window.location.href = `/?toast=DELETED_SUCCESSFULLY&task=${name}&checked=${task["checked"]}&dateadded=${task["dateAdded"]}&datedue=${task["dateDue"]}&priority=${task["priority"]}`;    
+        window.location.href = `/todo-list.html?toast=DELETED_SUCCESSFULLY&task=${name}&checked=${task["checked"]}&dateadded=${task["dateAdded"]}&datedue=${task["dateDue"]}&priority=${task["priority"]}`;    
     });
 });
 

@@ -3,188 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="todo-list/styles.css">
+    <link rel="stylesheet" type="text/css" href="account-management/styles.css">
     <script src="https://kit.fontawesome.com/4ab18c6505.js" crossorigin="anonymous"></script>
-    <title>To-do List</title>
+    <title>Account Management</title>
 </head>
 <body>
-    <img class="bg-img" src="todo-list/images/sumeru.jpg"/> 
     <header>
         <hgroup>
-            <h1>AKADEMIYA TODO LISTS</h1>
+            <h1>SUMERU AKADEMIYA</h1>
             <h2>An app to support you in your day to day in the Akademiya</h2>
         </hgroup>
-        <button class="account-btn">See Account</button>
-        <button class="logout-btn">Log Out</button>
-    </header>
-
-    <main class="todo-container">
-        <navbar class="nav-container">
-            <selection class="destination personal"><h4>Personal TDL</h4></selection>
-            <selection class="destination collabing"><h4>Collaborative TDL</h4></selection>
-        </navbar>
-        <section class="todo-header">
-            <div class="new-task-btn-container">
-                <button class="new-task-btn primary-btn">New Task +</button>
-            </div> 
-            <div class="filters-container">
-                <p>Sort by: </p>
-                <select class="sort-dropdown">
-                    <option value="date-added">Date Added</option>
-                    <option value="date-due">Date Due</option>
-                    <option value="priority">Priority</option>
-                </select>
-            </div>
-        </section>  
-
-        <table class="task-list">
-            <thead>
-                <tr>
-                    <th class="checkbox"></th>
-                    <th class="name">TASKS</th>
-                    <th class="priority">PRIORITY</th>
-                    <th class="datetime-due">DUE ON</th>
-                    <th class="datetime-added">ADDED AT</th>
-                    <th class="utils"></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </main>
-
-    <section class="add-task-modal-container modal-container hidden">
-        <form class="add-modal modal">
-            <div class="modal-header">
-                <h3>Add Task</h3>
-                <div class="close-btn-container">
-                    <img class="close-btn" src="todo-list/images/close.png">
+    </header>   
+    <div class="model-image">
+        <img src="account-management/images/nahida.png" alt="Italian Trulli">
+    </div>
+    <section id="login-field" class="login-container">                      
+        <div class="container-header">    
+            <div>Log into the Akademiya</div>
+        </div>
+        <div>   
+            <form id="login-inputs" class="login-input-field">    
+                <label>Email</label>
+                <input id="login-email" type="text" placeholder="google@gmail.com" required/>
+                <error id="login-mail-error" class="hidden"></error>
+                <div class="login-bottom-container">
+                    <label>Password</label>
+                    <div class="login-pass-field">
+                        <input id="log-view-password" type="password" placeholder="********" required/>
+                        <div id='log-pass-btn' class="show-btn">&#128065;</div>  
+                    </div>
+                    <error id="login-pass-error" class="hidden"></error>
+                    <button type="submit" id="retrieve-account" class="confirm-btn">Log in</button>
                 </div>
-            </div>
-            
-            <div class="form-element name-section">    
-                <label>TASK NAME</label>
-                <input type="text" name="name" class="name-field" placeholder="Enter Name"/>
-                <div class="name-error error"></div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-element priority-section">
-                    <label>PRIORITY</label>
-                    <select name="priority" class="priority-field" placeholder="Select Priority">
-                        <option value="HIGH">High</option>
-                        <option value="MEDIUM" selected>Medium</option>
-                        <option value="LOW">Low</option>
-                    </select>
-                    <div class="priority-error error"></div>
-                </div>
-                <div class="form-element date-section">
-                    <label>DUE DATE</label>
-                    <input type="date" name="date-due" class="date-field" placeholder="Select Date"/>
-                    <div class="date-error error"></div>
-                </div>
-                
-                <div class="form-element time-section">
-                    <label>DUE TIME</label>
-                    <input type="time" name="time-due" class="time-field" placeholder="Select Time"/>
-                    <div class="time-error error"></div>
-                </div>
-            </div>
-
-            <div class="form-element button-section">
-                <button class="add-task-btn primary-btn" type="submit">Add Task</button>
-            </div>
-        </form>
-    </section>
-
-   <section class="edit-task-modal-container modal-container hidden">
-        <form class="edit-modal modal">
-            <div class="modal-header">
-                <h3>Edit Task</h3>
-                <div class="close-btn-container">
-                    <img class="close-btn" src="todo-list/images/close.png">
-                </div>   
-            </div>
-            <div class="form-element" style="display: none;">
-                <input type="text" name="id" class="id-field"/>
-            </div>
-            <div class="form-element name-section">    
-                <label>TASK NAME</label>
-                <input type="text" name="name" class="name-field" placeholder="Enter Name" required/>
-                <div class="name-error error"></div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-element priority-section">
-                    <label>PRIORITY</label>
-                    <select name="priority" class="priority-field" placeholder="Select Priority">
-                        <option value="HIGH">High</option>
-                        <option value="MEDIUM" selected>Medium</option>
-                        <option value="LOW">Low</option>
-                    </select>
-                    <div class="priority-error error"></div>
-                </div>
-                <div class="form-element date-section">
-                    <label>DUE DATE</label>
-                    <input type="date" name="date-due" class="date-field" placeholder="Select Date" required/>
-                    <div class="date-error error"></div>
-                </div>
-                
-                <div class="form-element time-section">
-                    <label>DUE TIME</label>
-                    <input type="time" name="time-due" class="time-field" placeholder="Select Time" required/>
-                    <div class="time-error error"></div>
-                </div>
-            </div>
-            <div class="form-element button-section">
-                <button class="edit-task-btn primary-btn" type="submit">Edit Task</button>
-            </div>
-        </form>
-    </section>
- 
-    <section class="delete-task-modal-container modal-container hidden">
-        <div class="delete-modal modal">
-           <div class="modal-header">
-                <h3>Confirm Delete</h3>
-            </div>
-            <div class="id-field" style="display: none;"></div>
-            <div class="modal-body">
-                Are you sure you want to delete the task <span class="name-field"></span>?
-            </div>
-            <div class="modal-buttons">
-                <form class="delete-task-btn-container">
-                    <button class="delete-task-btn primary-btn" type="submit">Delete</button>
-                </form>
-                <div class="cancel-btn-container">              
-                    <button class="cancel-btn secondary-btn">Cancel</button>
-                </div>
-            </div>
+            </form>
+            <div class="login-lower-field">
+                <div class="forgot-password">Forgotten Password?</div>
+            </div>  
+            <div class="new-acc">
+                <button id="sign-up" class="btn">Create new account</button>
+            </div>  
         </div>
     </section>
+    <section id="register-field" class="register-container hidden">       
+        <div id='register-close-btn' class="close-btn">&times;</div>   
+        <div class="container-header">      
+            <div>Register into the Akademiya</div>
+        </div>
+        <div>
+            <form id="register-inputs" class="register-input-field"> 
+                <label>Full Name</label>
+                <input type="text" id="register-user-name" placeholder="FirstName LastName" required/>
+                <error id="reg-name-error" class="hidden"></error>
+                <label>Email</label>
+                <input type="text" id="register-email"  placeholder="google@gmail.com" required/>
+                <error id="reg-mail-error" class="hidden"></error>
+                <label>Password</label>
+                <div class="reg-pass-field">
+                    <input type="password" id="register-password"  placeholder="********" required/>
+                    <div id='reg-pass-btn' class="show-btn">&#128065;</div>  
+                </div>
+                <error id="reg-pass-error" class="hidden"></error> 
+                <label>Repeat Password</label>
+                <div class="reg-repass-field">
+                    <input type="password" id="register-repeat-password" placeholder="********" required/>
+                    <div id='reg-repass-btn' class="show-btn">&#128065;</div>
+                </div>
+                <error id="reg-repass-error" class="hidden"></error>
+                <div>
+                    <button type="submit" id="create-account" class="confirm-btn">Create Account</button>
+                </div>  
+            </form>
 
-    <section class="alert-container hidden">
-        <div class="content"><img class="alert-mark" src="todo-list/images/check.png"><span class="alert-message"></span></div>
-        <div class="close-btn-container">                    
-            <img class="close-btn" src="todo-list/images/close.png">
         </div>
     </section>
-
-    <section class="toast-container hidden">
-        <div class="content">
-            <img class="toast-mark" src="todo-list/images/check.png">
-            <span>Task <span class="task-name"></span> has been deleted. If you want to undo this action, <a class="undo-delete" href="/">click here!</a></p>        
-        </div>    
-        <div class="close-btn-container">                    
-            <div class="close-btn">&times;</div>
+    <section id="account-field" class="account-container hidden">  
+        <div class="container-header">      
+            <div>User Information</div>
         </div>
-        <div class="recently-deleted-element hidden">
-            <p class="checked"></p>
-            <p class="date-added"></p>
-            <p class="date-due"></p>
-            <p class="priority"></p>
-        </div>          
-    </section>
+        <div>
+            <form id="edit-inputs" class="edit-input-field"> 
+                <label>Name</label>
+                <input type="text" id="edit-user-name" placeholder="FirstName LastName" required/>        
+                <error id="edit-name-error" class="hidden"></error>
+                <label>New Password</label>
+                <input type="password" id="edit-password" required/>        
 
+                <div class ="edit-btn-field">
+                    <button type="text" id="cancel-edit" class="confirm-btn">Cancel</button>    
+                    <div style="width: 2em;"></div>
+                    <button type="submit" id="edit-account" class="btn">Save</button>
+                </div>
+                  
+            </form>
+             <div id="account-data" class="account-data-field"> 
+                <label>Name</label>
+                <info id="user-name"></info>
+                <label>Email</label>
+                <info id="user-email"></info>
+                <div class ="acc-btn-field">
+                    <button type="text" id="edit-info" class="confirm-btn">Edit Information</button>
+                    <div style="width: 2em;"></div>
+                    <button type="text" id="log-out" class="btn">Log Out</button>
+                </div>  
+            </div>
+        </div>
+        <div class="personal-tdl">
+            <button id="personal-tdl" class="btn">Go to To  Do-List</button>
+        </div>  
+    </section>  
+    
+    <div id="dark-overlay" class="hidden"></div>
+    <section id="forgot-field" class="register-container hidden">       
+        <div id='forgot-close-btn' class="close-btn">&times;</div>   
+        <div class="container-header">      
+            <div>Forgot Password</div>
+        </div>
+        <div>
+            <form id="forget-inputs" class="register-input-field"> 
+                <label>Email</label>
+                <input type="text" id="forgot-email"  placeholder="google@gmail.com" required/>
+                <error id="reg-mail-error" class="hidden"></error>
+                <div>
+                    <button type="submit" id="find-password-account" class="confirm-btn">Send Confirmation Email</button>
+                </div>  
+            </form>
+        </div>
 </body>
-<script type = "module" src="todo-list/scripts/index.js"></script>
+<script src="account-management/index.js" type="module"></script>
 </html>

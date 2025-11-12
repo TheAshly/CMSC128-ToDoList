@@ -5,13 +5,26 @@ Delegator.delegate(".nav-container", "navbar");
 Delegator.delegate(".personal", "personal");
 Delegator.delegate(".collabing", "collabing");
 Delegator.delegateMany(".destination", "choices");
-
+Delegator.delegate(".new-collaborator-btn", "new-collab-btn");
+Delegator.delegate(".manage-collaborator-btn", "manage-collaborator-btn")
+Delegator.delegate(".view-collaborator-btn", "view-collaborator-btn")
+    
 const databases = await getMainDatabase();
 const user = await getUser();
 
 if(user.collabing.location === user.uid){
-    if(user.collabing.state) Delegator.get("collabing").classList.toggle("selected"); 
-    else Delegator.get("personal").classList.toggle("selected"); 
+    if(user.collabing.state) {  
+        Delegator.get("collabing").classList.toggle("selected");
+        Delegator.get("manage-collaborator-btn").classList.remove("hidden");
+        Delegator.  get("view-collaborator-btn").classList.add("hidden");
+    } else {
+        Delegator.get("personal").classList.toggle("selected"); 
+        Delegator.get("manage-collaborator-btn").classList.add("hidden");
+        Delegator.get("view-collaborator-btn").classList.add("hidden");
+    }
+} else {
+    Delegator.get("manage-collaborator-btn").classList.add("hidden");
+    Delegator.get("view-collaborator-btn").classList.remove("hidden");    
 }
 
 databases.forEach(database => {
@@ -53,6 +66,7 @@ Delegator.get("personal").addEventListener("click", async e => {
 
         Delegator.get("selected").classList.toggle("selected");
         Delegator.get("personal").classList.toggle("selected"); 
+        Delegator.get("new-collab-btn").classList.add("hidden");
         await updateState(false);
         await resetLocation();
 
@@ -63,7 +77,6 @@ Delegator.get("personal").addEventListener("click", async e => {
 Delegator.get("collabing").addEventListener("click", async e => {
     if(!Delegator.get("collabing").classList.contains("selected")){
         e.preventDefault();
-
         Delegator.get("selected").classList.toggle("selected");
         Delegator.get("collabing").classList.toggle("selected"); 
         await updateState(true);
